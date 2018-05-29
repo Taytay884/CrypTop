@@ -7,12 +7,11 @@ const SmartInput = (props) => {
     const handleInput = (e) => {
         const value = e.target.value;
         console.log(value);
-        // props.updateInput({ [props.id]: value })
+        props.updateInput({ contact: { [props.id]: value } })
     }
 
     return (
-        <input type="text" value={props.value} />
-        // <input type="text" onInput={handleInput} value={props.value} />
+        <input type="text" onInput={handleInput} value={props.value} />
     )
 }
 

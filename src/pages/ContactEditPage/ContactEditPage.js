@@ -6,38 +6,49 @@ import SmartInput from '../../components/SmartInput/SmartInput'
 import './ContactEditPage.css';
 
 class ContactEditPage extends Component {
-    state = {
-        contact: {
-            name: '',
-
-        },
-        contactId: this.props.match.params.id,
+    constructor(props) {
+        super(props);
+        this.state = {
+            contact: {
+                _id: this.props.match.params.id,
+                name: '',
+            },
+        }
     }
 
     componentDidMount() {
-        if (!this.state.contactId) return;
-        ContactService.getContactById(this.state.contactId).then(contact => {
+        console.log('MOUNTED', this.state.contact)
+        if (!this.state.contact._id) return;
+        ContactService.getContactById(this.state.contact._id).then(contact => {
             this.setState({ contact });
             console.log(contact);
         })
     }
 
     handleSave = () => {
-        // ContactService.saveContact
+        ContactService.saveContact(this.state.contact);
+        console.log('SAVED:', this.state.contact)
     }
 
     updateInput = (data) => {
-        console.log(data);
         this.setState(data);
+        console.log(this.state.contact);
     }
+
+    // handleInput = (e) => {
+    //     const value = e.target.value;
+    //     const name = e.target.name;
+    //     this.setState({ [name]: value })
+    //     console.log(name)
+    // }
 
     render() {
         return (
             <section className="ContactEditPage" >
-                <h1>Contact Edit:</h1>
+                <h1>Contact Edit</h1>
                 <img src={this.state.contact.picture} />
                 <form>
-                    <SmartInput id="contact.name" updateInput={this.updateInput} value={this.state.contact.name} />
+                    <SmartInput id="name" updateInput={this.updateInput} value={this.state.contact.name} />
                     < ul >
                         <li className="flex">
                             <i className="email-icon"></i>
@@ -48,7 +59,7 @@ class ContactEditPage extends Component {
                             {/* <input type="text" value={this.state.contact.phone} /> */}
                         </li>
                     </ul>
-                    <Link to={`/contact/${this.state.contactId}`}>
+                    <Link to={`/contact/${this.state.contact._id}`}>
                         <button onClick={this.handleSave}>
                             Save
                         </button>
