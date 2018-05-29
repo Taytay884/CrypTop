@@ -13,9 +13,6 @@ const Header = (props) => {
                     <li><NavLink exact activeClassName="selected" to="/">Home</NavLink></li>
                     <li><NavLink exact activeClassName="selected" to="/contacts">Contacts</NavLink></li>
                     <li><NavLink exact activeClassName="selected" to="/contact">Details</NavLink></li>
-                    {/* <li><NavLink>Home</NavLink></li> */}
-                    {/* <li>About</li> */}
-                    {/* <li>App</li> */}
                 </ul>
             </div>
         </header>

@@ -1,0 +1,48 @@
+.ContactEditPage {
+    color: var(--secondary-special-color);
+    font-size: 24px;
+    width: 100%;
+    padding: 0px 20px;
+    /* text-align: left; */
+    margin: 0px 20px;
+    border-radius: 10px;
+    background-color: #242582ba;
+}
+
+.ContactEditPage img {
+    height: 120px;
+}
+
+.ContactEditPage li {
+    margin-bottom: 5px;
+}
+
+.ContactEditPage h2 {
+    margin-bottom: 5px;
+}
+
+.email-icon {
+    background-image: url('../../img/email.svg');
+    background-size: cover;
+    height: 32px;
+    width: 32px;
+    margin-right: 10px;
+}
+
+.phone-icon {
+    background-image: url('../../img/telephone.svg');
+    background-size: cover;
+    height: 32px;
+    width: 32px;
+    margin-right: 10px;
+}
+
+.ContactEditPage h1 {
+    margin: 0 auto;
+    margin-bottom: 10px;
+    width: fit-content;
+    padding: 0px 10px;
+    border-radius: 0px 0px 20px 20px;
+    background-color: var(--main-bg-color);
+    color: var(--main-font-color);
+}

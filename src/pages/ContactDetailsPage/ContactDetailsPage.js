@@ -1,16 +1,17 @@
 import React, { Component } from 'react';
+import { Link } from "react-router-dom";
 import ContactService from '../../services/ContactService'
 
 import './ContactDetailsPage.css';
 
 class ContactDetailsPage extends Component {
     state = {
-        contact: {}
+        contact: {},
+        contactId: this.props.match.params.id,
     }
 
     componentDidMount() {
-        let id = this.props.match.params.id;
-        ContactService.getContactById(id).then(contact => {
+        ContactService.getContactById(this.state.contactId).then(contact => {
             console.log(contact)
             this.setState({ contact });
         })
@@ -35,6 +36,7 @@ class ContactDetailsPage extends Component {
                             {this.state.contact.phone}
                         </li>
                     </ul>
+                    <Link to={`/contact/edit/${this.state.contactId}`}><button>Edit</button></Link>
                 </section>
             );
         } else {
