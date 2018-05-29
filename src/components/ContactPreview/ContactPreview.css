@@ -1,0 +1,10 @@
+/* .ContactPreview{
+    border-bottom: 2px solid var(--main-bg-color);
+    margin-bottom: 4px;
+    padding: 8px;
+    border-radius: 0px 0px 5px 0px;
+} */
+.ContactPreview img {
+    height: 30px;
+    margin-right: 10px;
+}

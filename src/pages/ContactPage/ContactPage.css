@@ -1,0 +1,30 @@
+.ContactPage {
+    color: var(--secondary-special-color);
+    font-size: 24px;
+    width: 100%;
+    padding: 0px 20px;
+    margin: 0px 20px;
+    border-radius: 10px;
+    background-color: #242582ba;
+}
+
+.ContactPage h1 {
+    margin: 0 auto;
+    margin-bottom: 10px;
+    width: fit-content;
+    padding: 0px 10px;
+    border-radius: 0px 0px 20px 20px;
+    background-color: var(--main-bg-color);
+    color: var(--main-font-color);
+}
+
+.ContactPage li {
+    margin-bottom: 4px;
+    padding: 8px;
+    /* width: 50%; */
+    border-radius: 0px 0px 5px 0px;
+}
+.ContactPage li:not(:last-child) {
+    border-bottom: 2px solid var(--main-bg-color);
+    
+}
