@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from "react-router-dom";
 import ContactService from '../../services/ContactService'
 import SmartInput from '../../components/SmartInput/SmartInput'
 
@@ -58,7 +57,7 @@ class ContactEditPage extends Component {
         return (
             <section className="ContactEditPage" >
                 <h1>Contact Edit</h1>
-                <img src={this.state.contact.picture} />
+                <img src={this.state.contact.picture} alt='' />
                 <form>
                     <SmartInput id="name" updateInput={this.updateInput} value={this.state.contact.name} />
                     < ul >

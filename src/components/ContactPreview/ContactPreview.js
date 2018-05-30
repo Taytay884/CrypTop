@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Link } from "react-router-dom";
 import './ContactPreview.css';
 
@@ -19,7 +19,7 @@ const ContactPreview = (props) => {
         <li>
             <Link to={route}>
                 <div className="ContactPreview flex align-center">
-                    <img src={contact.picture}></img>
+                    <img src={contact.picture} alt='' />
                     <span>{contact.name}</span>
                 </div>
             </Link>

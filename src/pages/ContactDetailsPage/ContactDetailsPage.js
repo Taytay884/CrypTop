@@ -22,7 +22,7 @@ class ContactDetailsPage extends Component {
             return (
                 <section className="ContactDetailsPage">
                     <h1>Contact Details</h1>
-                    <img src={this.state.contact.picture} />
+                    <img src={this.state.contact.picture} alt='' />
                     <h2>
                         {this.state.contact.name}
                     </h2>

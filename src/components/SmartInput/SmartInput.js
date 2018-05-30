@@ -1,6 +1,6 @@
 // USAGE: Most pass as props updateInput func and value. (no value = '')
 
-import React, { Component } from 'react'
+import React from 'react'
 
 const SmartInput = (props) => {
 

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import ContactPreview from '../ContactPreview/ContactPreview';
 // import './css/ContactList.css';
 
