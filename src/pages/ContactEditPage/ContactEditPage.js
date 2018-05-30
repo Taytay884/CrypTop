@@ -10,37 +10,49 @@ class ContactEditPage extends Component {
         super(props);
         this.state = {
             contact: {
-                _id: this.props.match.params.id,
+                _id: null,
+                picture: '',
                 name: '',
+                email: '',
+                phone: ''
             },
         }
     }
 
     componentDidMount() {
-        console.log('MOUNTED', this.state.contact)
-        if (!this.state.contact._id) return;
-        ContactService.getContactById(this.state.contact._id).then(contact => {
+        if (this.props.match.params.id) {
+            ContactService.getContactById(this.props.match.params.id).then(contact => {
+                this.setState({ contact });
+                console.log(contact);
+            })
+        } else {
+            const contact = ContactService.getEmptyContact()
             this.setState({ contact });
             console.log(contact);
+        }
+        console.log('MOUNTED', this.state.contact)
+        if (!this.state.contact._id) return;
+    }
+    // TODO: HandleSave.
+    handleSave = (e) => {
+        // const contactId = this.state.contact._id;
+        // if (!this.state.contact._id) this.setState({ contact: { _id: contactId } })
+        e.preventDefault();
+        console.log('STATE', this.state);
+        ContactService.saveContact(this.state.contact).then(contact => {
+            this.setState({ contact })
+            this.props.history.push(`/contact/${contact._id}`)
+            console.log('contact:', contact)
         })
     }
 
-    handleSave = () => {
-        ContactService.saveContact(this.state.contact);
-        console.log('SAVED:', this.state.contact)
-    }
-
     updateInput = (data) => {
-        this.setState(data);
-        console.log(this.state.contact);
+        const newContact = Object.assign(this.state.contact, data);
+        this.setState(newContact);
+        console.log(data)
     }
 
-    // handleInput = (e) => {
-    //     const value = e.target.value;
-    //     const name = e.target.name;
-    //     this.setState({ [name]: value })
-    //     console.log(name)
-    // }
+
 
     render() {
         return (
@@ -52,18 +64,16 @@ class ContactEditPage extends Component {
                     < ul >
                         <li className="flex">
                             <i className="email-icon"></i>
-                            {/* <input type="text" value={this.state.contact.email} /> */}
+                            <SmartInput id="email" updateInput={this.updateInput} value={this.state.contact.email} />
                         </li>
                         <li className="flex">
                             <i className="phone-icon"></i>
-                            {/* <input type="text" value={this.state.contact.phone} /> */}
+                            <SmartInput id="phone" updateInput={this.updateInput} value={this.state.contact.phone} />
                         </li>
                     </ul>
-                    <Link to={`/contact/${this.state.contact._id}`}>
-                        <button onClick={this.handleSave}>
-                            Save
-                        </button>
-                    </Link>
+                    <button onClick={this.handleSave}>
+                        Save
+                    </button>
                 </form>
             </section >
         );

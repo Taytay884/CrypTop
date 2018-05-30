@@ -11,7 +11,7 @@ const Header = (props) => {
             <div className="nav-bar">
                 <ul className="flex">
                     <li><NavLink exact activeClassName="selected" to="/">Home</NavLink></li>
-                    <li><NavLink exact activeClassName="selected" to="/contacts">Contacts</NavLink></li>
+                    <li><NavLink exact activeClassName="selected" to="/contact">Contacts</NavLink></li>
                     <li><NavLink exact activeClassName="selected" to="/contact">Details</NavLink></li>
                 </ul>
             </div>

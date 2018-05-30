@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from "react-router-dom";
 import ContactService from '../../services/ContactService'
 import ContactList from '../../components/ContactList/ContactList'
 import Filter from '../../components/Filter/Filter'
@@ -30,6 +31,7 @@ class ContactPage extends Component {
         return (
             <section className="ContactPage">
                 <Filter handleFilter={this.handleFilter} />
+                <Link to='/contact/new'><button>Add Contact</button></Link>
                 <h1>Contacts</h1>
                 {/* {listItems} */}
                 <ContactList contacts={this.state.contacts} />

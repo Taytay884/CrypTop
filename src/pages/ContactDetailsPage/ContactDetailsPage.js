@@ -36,7 +36,7 @@ class ContactDetailsPage extends Component {
                             {this.state.contact.phone}
                         </li>
                     </ul>
-                    <Link to={`/contact/edit/${this.state.contactId}`}><button>Edit</button></Link>
+                    <Link to={`/contact/${this.state.contactId}/edit`}><button>Edit</button></Link>
                 </section>
             );
         } else {

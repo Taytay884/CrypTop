@@ -18,9 +18,10 @@ class App extends Component {
           <div>
             <Header />
             <Switch>
-              <Route exact path="/contacts" component={ContactPage} />
+              <Route path="/contact/new" component={ContactEditPage} />
+              <Route path="/contact/:id/edit" component={ContactEditPage} />
               <Route exact path="/contact/:id" component={ContactDetailsPage} />
-              <Route path="/contact/edit/:id?" component={ContactEditPage} />
+              <Route exact path="/contact" component={ContactPage} />
             </Switch>
           </div>
         </Router>

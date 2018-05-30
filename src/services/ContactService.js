@@ -198,7 +198,7 @@ function _addContact(contact) {
     contact._id = uniqid()
     contact.picture = '/img/img_avatar.svg'
     contacts.push(contact)
-    resolve(contacts)
+    resolve(contact)
   })
 }
 
