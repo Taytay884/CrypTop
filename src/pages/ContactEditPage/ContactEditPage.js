@@ -2,6 +2,11 @@ import React, { Component } from 'react';
 import ContactService from '../../services/ContactService'
 import SmartInput from '../../components/SmartInput/SmartInput'
 
+// Store:
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { saveContact, loadContact } from '../../store/actions'
+
 import './ContactEditPage.css';
 
 class ContactEditPage extends Component {
@@ -19,41 +24,36 @@ class ContactEditPage extends Component {
     }
 
     componentDidMount() {
-        if (this.props.match.params.id) {
-            ContactService.getContactById(this.props.match.params.id).then(contact => {
-                this.setState({ contact });
-                console.log(contact);
-            })
+        const contactId = this.props.match.params.id;
+        if (contactId) {
+            this.props.loadContact(contactId, contact => {
+                this.setState({ contact })
+            });
         } else {
             const contact = ContactService.getEmptyContact()
             this.setState({ contact });
-            console.log(contact);
         }
-        console.log('MOUNTED', this.state.contact)
-        if (!this.state.contact._id) return;
     }
-    // TODO: HandleSave.
+
     handleSave = (e) => {
-        // const contactId = this.state.contact._id;
-        // if (!this.state.contact._id) this.setState({ contact: { _id: contactId } })
         e.preventDefault();
-        console.log('STATE', this.state);
-        ContactService.saveContact(this.state.contact).then(contact => {
-            this.setState({ contact })
-            this.props.history.push(`/contact/${contact._id}`)
-            console.log('contact:', contact)
-        })
+        const contact = this.state.contact;
+        this.props.saveContact(
+            contact,
+            (contacts) => {
+                if (contact._id) this.props.history.push(`/contact/${contact._id}`)
+                else this.props.history.push(`/contact/${contacts[contacts.length - 1]._id}`)
+            }
+        )
     }
 
     updateInput = (data) => {
         const newContact = Object.assign(this.state.contact, data);
         this.setState(newContact);
-        console.log(data)
     }
 
-
-
     render() {
+        if (!this.state.contact) return <h1>Loading...</h1>
         return (
             <section className="ContactEditPage" >
                 <h1>Contact Edit</h1>
@@ -79,9 +79,19 @@ class ContactEditPage extends Component {
     }
 }
 
-export default ContactEditPage;
+const mapStateToProps = (state) => {
+    return {
+        contacts: state.contacts,
+    };
+};
 
+const mapDispatchToProps = (dispatch) => {
+    return bindActionCreators({
+        saveContact,
+        loadContact
+    }, dispatch)
+};
 
-// How I'm getting something from the service and put it into the state.
+export default connect(mapStateToProps, mapDispatchToProps)(ContactEditPage);
 
-// How can I pass props to children...
+// export default ContactEditPage;

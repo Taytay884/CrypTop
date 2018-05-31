@@ -2,19 +2,22 @@ import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 import ContactService from '../../services/ContactService'
 
+// Store:
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { loadContact } from '../../store/actions'
 import './ContactDetailsPage.css';
 
 class ContactDetailsPage extends Component {
     state = {
         contact: {},
-        contactId: this.props.match.params.id,
     }
 
     componentDidMount() {
-        ContactService.getContactById(this.state.contactId).then(contact => {
-            console.log(contact)
-            this.setState({ contact });
-        })
+        const contactId = this.props.match.params.id;
+        this.props.loadContact(contactId, contact => {
+            this.setState({ contact })
+        });
     }
 
     render() {
@@ -49,7 +52,19 @@ class ContactDetailsPage extends Component {
     }
 }
 
-export default ContactDetailsPage;
+const mapStateToProps = (state) => {
+    return {
+        contacts: state.contacts,
+    };
+};
+
+const mapDispatchToProps = (dispatch) => {
+    return bindActionCreators({
+        loadContact
+    }, dispatch)
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ContactDetailsPage);
 
 // How I'm getting something from the service and put it into the state.
 

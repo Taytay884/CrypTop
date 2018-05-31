@@ -4,16 +4,23 @@ import { combineReducers } from 'redux'
 
 const initState = {
     contacts: [],
+    contact: {},
 }
 
 export function contacts(state = initState, action) {
 
-    console.log(action.type)
-
     let newState = null;
     switch (action.type) {
         case types.LOAD_CONTACTS:
-            const newState = _.cloneDeep(state);
+            newState = _.cloneDeep(state);
+            newState.contacts = action.payload;
+            return newState;
+        case types.LOAD_CONTACT:
+            newState = _.cloneDeep(state);
+            newState.contact = action.payload;
+            return newState;
+        case types.SAVE_CONTACT:
+            newState = _.cloneDeep(state);
             newState.contacts = action.payload;
             return newState;
         default:

@@ -7,22 +7,16 @@ import './ContactPage.css';
 // Store
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-
-import { getContacts } from '../../store/actions';
+import { loadContacts } from '../../store/actions';
 
 class ContactPage extends Component {
-    state = {
-        contacts: [],
-    }
 
     componentDidMount() {
         this.renderContacts();
     }
 
     renderContacts = (filterBy = null) => {
-        this.props.getContacts();
-        const contacts = this.props.contacts;
-        this.setState({ contacts });
+        this.props.loadContacts();
     }
 
     handleFilter = (e) => {
@@ -37,14 +31,13 @@ class ContactPage extends Component {
                 <Filter handleFilter={this.handleFilter} />
                 <Link to='/contact/new'><button>Add Contact</button></Link>
                 <h1>Contacts</h1>
-                <ContactList contacts={this.state.contacts} />
+                <ContactList contacts={this.props.contacts} />
             </section>
         );
     }
 }
 
 const mapStateToProps = (state) => {
-    console.log(state);
     return {
         contacts: state.contacts,
     };
@@ -52,8 +45,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return bindActionCreators({
-        getContacts,
-
+        loadContacts,
     }, dispatch)
 };
 
