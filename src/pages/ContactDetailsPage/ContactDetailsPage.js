@@ -7,7 +7,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { loadContact } from '../../store/actions'
 import './ContactDetailsPage.css';
-
+// CHECK GIT
 class ContactDetailsPage extends Component {
     state = {
         contact: {},
