@@ -16,6 +16,7 @@ class ContactDetailsPage extends Component {
     componentDidMount() {
         const contactId = this.props.match.params.id;
         this.props.loadContact(contactId, contact => {
+            console.log(contact);
             this.setState({ contact })
         });
     }
@@ -39,7 +40,7 @@ class ContactDetailsPage extends Component {
                             {this.state.contact.phone}
                         </li>
                     </ul>
-                    <Link to={`/contact/${this.state.contactId}/edit`}><button>Edit</button></Link>
+                    <Link to={`/contact/${this.state.contact._id}/edit`}><button>Edit</button></Link>
                 </section>
             );
         } else {
