@@ -55,18 +55,21 @@ class ContactEditPage extends Component {
     render() {
         if (!this.state.contact) return <h1>Loading...</h1>
         return (
-            <section className="ContactEditPage" >
-                <h1>Contact Edit</h1>
+            <section className="ContactEditPage page" >
+                <h1 className="title-tab">Edit</h1>
                 <img src={this.state.contact.picture} alt='' />
                 <form>
-                    <SmartInput id="name" updateInput={this.updateInput} value={this.state.contact.name} />
                     < ul >
-                        <li className="flex">
-                            <i className="email-icon"></i>
+                        <li>
+                            <label htmlFor="name">Name</label>
+                            <SmartInput id="name" updateInput={this.updateInput} value={this.state.contact.name} />
+                        </li>
+                        <li>
+                            <label htmlFor="email">Email</label>
                             <SmartInput id="email" updateInput={this.updateInput} value={this.state.contact.email} />
                         </li>
-                        <li className="flex">
-                            <i className="phone-icon"></i>
+                        <li>
+                            <label htmlFor="phone">Phone</label>
                             <SmartInput id="phone" updateInput={this.updateInput} value={this.state.contact.phone} />
                         </li>
                     </ul>

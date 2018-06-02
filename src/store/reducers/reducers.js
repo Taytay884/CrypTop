@@ -1,6 +1,5 @@
 import * as types from '../types';
 import _ from 'lodash';
-import UserService from '../../services/UserService';
 
 const initState = {
     contacts: [],

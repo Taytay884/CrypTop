@@ -16,9 +16,9 @@ const ContactPreview = (props) => {
     const route = `/contact/${props.contact._id}`;
     return (
         // <li onClick={handleClick}>
-        <li>
+        <li className="ContactPreview">
             <Link to={route}>
-                <div className="ContactPreview flex align-center">
+                <div className="flex align-center">
                     <img src={contact.picture} alt='' />
                     <span>{contact.name}</span>
                 </div>

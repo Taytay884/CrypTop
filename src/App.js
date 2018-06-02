@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 // import { Router, Route, Switch } from 'react-router'
 
-import HomePage from './pages/HomePage/HomePage'
+// import HomePage from './pages/HomePage/HomePage'
 import ContactPage from './pages/ContactPage/ContactPage';
 import ContactDetailsPage from './pages/ContactDetailsPage/ContactDetailsPage';
 import ContactEditPage from './pages/ContactEditPage/ContactEditPage';
@@ -24,7 +24,6 @@ class App extends Component {
   }
 
   render() {
-    const user = this.props.user;
     return (
       < div className="App" >
         <Router>

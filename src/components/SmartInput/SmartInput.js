@@ -10,7 +10,7 @@ const SmartInput = (props) => {
     }
 
     return (
-        <input type="text" onInput={handleInput} value={props.value} />
+        <input type="text" id={props.id} onInput={handleInput} value={props.value} />
     )
 }
 

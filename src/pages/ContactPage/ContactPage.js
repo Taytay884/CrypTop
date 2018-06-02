@@ -16,7 +16,7 @@ class ContactPage extends Component {
     }
 
     renderContacts = (filterBy = null) => {
-        this.props.loadContacts();
+        this.props.loadContacts(filterBy);
     }
 
     handleFilter = (e) => {
@@ -27,11 +27,11 @@ class ContactPage extends Component {
 
     render() {
         return (
-            <section className="ContactPage">
+            <section className="ContactPage page">
+                <h1 className="title-tab">Contacts</h1>
                 <Filter handleFilter={this.handleFilter} />
-                <Link to='/contact/new'><button>Add Contact</button></Link>
-                <h1>Contacts</h1>
                 <ContactList contacts={this.props.contacts} />
+                <Link className="add-contact" to='/contact/new'><i className="add-contact-icon"></i></Link>
             </section>
         );
     }

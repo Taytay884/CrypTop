@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
-import ContactService from '../../services/ContactService'
 
 // Store:
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { loadContact } from '../../store/actions'
 import './ContactDetailsPage.css';
-// CHECK GIT
+
+
 class ContactDetailsPage extends Component {
     state = {
         contact: {},
@@ -24,8 +24,8 @@ class ContactDetailsPage extends Component {
     render() {
         if (this.state.contact) {
             return (
-                <section className="ContactDetailsPage">
-                    <h1>Contact Details</h1>
+                <section className="ContactDetailsPage page">
+                    <h1 className="title-tab">Details</h1>
                     <img src={this.state.contact.picture} alt='' />
                     <h2>
                         {this.state.contact.name}
@@ -46,7 +46,7 @@ class ContactDetailsPage extends Component {
         } else {
             return (
                 <section className="ContactDetailsPage">
-                    <h1>Contact Details</h1>
+                    <h1>Details</h1>
                 </section>
             );
         }

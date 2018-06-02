@@ -5,7 +5,7 @@ const Filter = (props) => {
     const handleFilter = props.handleFilter;
     return (
         <section className="Filter">
-            <input onInput={handleFilter} type="search" placeholder="Filter..." />
+            <input className="clean-input" onInput={handleFilter} type="search" placeholder="Filter..." />
         </section>
     );
 }

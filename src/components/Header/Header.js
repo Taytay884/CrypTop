@@ -9,7 +9,7 @@ const Header = (props) => {
         <header className="App-header flex space-between align-center justify-center">
             <h1 className="App-title">CrypTop</h1>
             <div className="nav-bar">
-                <ul className="flex">
+                <ul className="flex space-between">
                     <li><NavLink exact activeClassName="selected" to="/">Home</NavLink></li>
                     <li><NavLink exact activeClassName="selected" to="/contact">Contacts</NavLink></li>
                     <li><NavLink exact activeClassName="selected" to="/login">Login</NavLink></li>
