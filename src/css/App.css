@@ -2,6 +2,7 @@
 @import './global/helpers.css';
 @import './global/icons.css';
 @import './global/scrollbar.css';
+@import './global/input.css';
 @import './pages/pages.css';
 @import url('https://fonts.googleapis.com/css?family=Alfa+Slab+One');
 @import url('https://fonts.googleapis.com/css?family=Fredoka+One');

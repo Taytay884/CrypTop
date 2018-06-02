@@ -32,9 +32,10 @@ class LoginPage extends Component {
 
     render() {
         return (
-            <section className="LoginPage">
-                <h1>Sign Up</h1>
+            <section className="LoginPage page">
+                <h1 className="title-tab">Sign Up</h1>
                 <form onSubmit={this.handleSignUp}>
+                    <label className="default-label" htmlFor="name" >Username</label>
                     <SmartInput id="name" updateInput={this.updateInput} value={this.state.user.name} />
                     <button>Sign Up</button>
                 </form>
