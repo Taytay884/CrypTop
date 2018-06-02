@@ -12,7 +12,7 @@ const Header = (props) => {
                 <ul className="flex">
                     <li><NavLink exact activeClassName="selected" to="/">Home</NavLink></li>
                     <li><NavLink exact activeClassName="selected" to="/contact">Contacts</NavLink></li>
-                    {/* <li><NavLink exact activeClassName="selected" to="/contact">Details</NavLink></li> */}
+                    <li><NavLink exact activeClassName="selected" to="/login">Login</NavLink></li>
                 </ul>
             </div>
         </header>

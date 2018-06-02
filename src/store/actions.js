@@ -1,5 +1,6 @@
 import * as types from './types';
 import ContactService from '../services/ContactService';
+import UserService from '../services/UserService';
 
 export function loadContacts(filterBy = null) {
     return dispatch => {
@@ -26,4 +27,14 @@ export function loadContact(id, callback) {
             callback(contact);
         })
     }
+}
+
+export function signUp(user) {
+    UserService.saveUser(user);
+    return { type: types.SIGN_UP, payload: user };
+}
+
+export function loadUser(callback) {
+    const user = UserService.getUser();
+    return { type: types.LOAD_USER, payload: user };
 }
