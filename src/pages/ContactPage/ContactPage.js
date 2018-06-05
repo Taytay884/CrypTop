@@ -12,10 +12,10 @@ import { loadContacts } from "../../store/actions";
 class ContactPage extends Component {
   componentDidMount() {
     this.renderContacts();
+    // console.log("userState", this.props.user.balance);
   }
 
   renderContacts = (filterBy = null) => {
-    console.log(filterBy);
     this.props.loadContacts(filterBy);
   };
 
@@ -42,7 +42,8 @@ class ContactPage extends Component {
 
 const mapStateToProps = state => {
   return {
-    contacts: state.contacts.contacts
+    contacts: state.contacts.contacts,
+    user: state.user.user
   };
 };
 

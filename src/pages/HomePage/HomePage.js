@@ -1,26 +1,35 @@
-// import {
-//     addTodo,
-//     toggleTodo,
-//     setVisibilityFilter,
-//     VisibilityFilters
-// } from './actions'
+import React, { Component } from "react";
+import "./HomePage.css";
 
-// // Log the initial state
-// console.log(store.getState())
+// Store
+import { connect } from "react-redux";
 
-// // Every time the state changes, log it
-// // Note that subscribe() returns a function for unregistering the listener
-// const unsubscribe = store.subscribe(() =>
-//     console.log(store.getState())
-// )
+// CMPS:
+import MoveList from "../../components/MoveList/MoveList";
 
-// // Dispatch some actions
-// store.dispatch(addTodo('Learn about actions'))
-// store.dispatch(addTodo('Learn about reducers'))
-// store.dispatch(addTodo('Learn about store'))
-// store.dispatch(toggleTodo(0))
-// store.dispatch(toggleTodo(1))
-// store.dispatch(setVisibilityFilter(VisibilityFilters.SHOW_COMPLETED))
+class HomePage extends Component {
+  render() {
+    const user = this.props.user;
+    return (
+      <section className="HomePage page">
+        <h1 className="title-tab">Home</h1>
+        Hello {user.name}, Your balance is {user.balance}.
+        <h2>Your Moves:</h2>
+        {user.moves.length ? (
+          <MoveList moves={user.moves} />
+        ) : (
+          <h3>No transactions for now.</h3>
+        )}
+        {/* <MoveList moves={this.props.user.moves} /> */}
+      </section>
+    );
+  }
+}
 
-// // Stop listening to state updates
-// unsubscribe()
+const mapStateToProps = state => {
+  return {
+    user: state.user.user
+  };
+};
+
+export default connect(mapStateToProps)(HomePage);

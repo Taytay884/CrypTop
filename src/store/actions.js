@@ -6,7 +6,6 @@ export function loadContacts(filterBy = null) {
   return dispatch => {
     ContactService.getContacts(filterBy)
       .then(contacts => {
-        console.log(contacts);
         dispatch({ type: types.LOAD_CONTACTS, payload: contacts });
       })
       .catch(err => console.log("Error:", err));
@@ -31,12 +30,17 @@ export function loadContact(id, callback) {
   };
 }
 
-export function signUp(user) {
+export function saveUser(user) {
   UserService.saveUser(user);
-  return { type: types.SIGN_UP, payload: user };
+  return { type: types.SAVE_USER, payload: user };
 }
 
-export function loadUser(callback) {
+export function loadUser() {
   const user = UserService.getUser();
   return { type: types.LOAD_USER, payload: user };
+}
+
+export function transferMoney(move) {
+  let user = UserService.addMove(move);
+  return { type: types.SAVE_USER, payload: user };
 }
