@@ -1,4 +1,5 @@
 import React from "react";
+import moment from "moment";
 import "./MovePreview.css";
 
 const MovePreview = props => {
@@ -7,9 +8,11 @@ const MovePreview = props => {
   return (
     <li className="MovePreview">
       <div>
-        <h3>To: {move.to}</h3>
-        <div>Amount: {move.amount}</div>
-        <div>At: {move.at}</div>
+        <h3 className="to">
+          {move.to} - <span className="amount">{move.amount}$</span>
+        </h3>
+
+        <div className="at">{moment(move.at).format("LLLL")}</div>
       </div>
     </li>
   );

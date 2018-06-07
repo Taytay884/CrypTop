@@ -4,15 +4,15 @@ import { Link } from "react-router-dom";
 // Store:
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import { loadContact, saveUser, transferMoney } from "../../store/actions";
+import { loadContact, saveUser } from "../../store/actions";
 import "./ContactDetailsPage.css";
 
 import SmartInput from "../../components/SmartInput/SmartInput";
+import Transfer from "../../components/Transfer/Transfer";
 
 class ContactDetailsPage extends Component {
   state = {
-    contact: {},
-    amount: ""
+    contact: {}
   };
 
   componentDidMount() {
@@ -26,21 +26,8 @@ class ContactDetailsPage extends Component {
     this.setState(data);
   };
 
-  handleTransfer = e => {
-    e.preventDefault();
-    let amount = this.state.amount;
-    let cloneUser = Object.assign({}, this.props.user);
-    if (amount <= 0 || cloneUser.balance < amount) {
-      console.log("Error: insufficent funds");
-      return;
-    }
-    cloneUser.balance -= amount;
-    this.props.saveUser(cloneUser);
-    this.props.transferMoney({ amount, to: this.state.contact.name });
-    this.setState({ amount: "" });
-  };
   render() {
-    if (this.state.contact) {
+    if (this.state.contact.name) {
       return (
         <section className="ContactDetailsPage page">
           <div className="details">
@@ -62,25 +49,13 @@ class ContactDetailsPage extends Component {
             </Link>
           </div>
           <hr />
-          <div>
-            <form onSubmit={this.handleTransfer}>
-              <h2>Want to transfer coins?</h2>
-              <label htmlFor="amount">Amount</label>
-              <SmartInput
-                id="amount"
-                type="number"
-                updateInput={this.updateInput}
-                value={this.state.amount}
-              />
-              <button type="submit">Transfer</button>
-            </form>
-          </div>
+          <Transfer contact={this.state.contact} />
         </section>
       );
     } else {
       return (
-        <section className="ContactDetailsPage">
-          <h1>Details</h1>
+        <section className="ContactDetailsPage page">
+          <h1>Wrong Contact ID.</h1>
         </section>
       );
     }
@@ -89,13 +64,12 @@ class ContactDetailsPage extends Component {
 
 const mapStateToProps = state => {
   return {
-    contacts: state.contacts.contacts,
-    user: state.user.user
+    contacts: state.contacts.contacts
   };
 };
 
 const mapDispatchToProps = dispatch => {
-  return bindActionCreators({ loadContact, saveUser, transferMoney }, dispatch);
+  return bindActionCreators({ loadContact, saveUser }, dispatch);
 };
 
 export default connect(

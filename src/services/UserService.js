@@ -4,6 +4,7 @@ function saveUser(user) {
   let userObj = _getEmptyUser();
   userObj = Object.assign(userObj, user);
   localStorage.setItem("user", JSON.stringify(userObj));
+  return userObj;
 }
 
 function getUser() {

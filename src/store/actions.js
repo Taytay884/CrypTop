@@ -31,7 +31,7 @@ export function loadContact(id, callback) {
 }
 
 export function saveUser(user) {
-  UserService.saveUser(user);
+  user = UserService.saveUser(user);
   return { type: types.SAVE_USER, payload: user };
 }
 

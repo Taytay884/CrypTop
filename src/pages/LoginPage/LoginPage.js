@@ -25,8 +25,8 @@ class LoginPage extends Component {
   handleSignUp = e => {
     e.preventDefault();
     const { from } = this.props.location.state || { from: { pathname: "/" } };
-    this.props.saveUser(this.state.user);
     this.props.history.push(from);
+    this.props.saveUser(this.state.user);
   };
 
   render() {
