@@ -1,5 +1,6 @@
 .MovePreview {
   padding: 5px;
+  /* height: fit-content; */
 }
 
 .MovePreview:not(:last-child) {

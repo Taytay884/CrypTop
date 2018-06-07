@@ -7,7 +7,7 @@ import { connect } from "react-redux";
 
 // CMPS:
 import MoveList from "../../components/MoveList/MoveList";
-import LineChart from "../../components/LineChart/LineChart";
+import BitcoinChart from "../../components/BitcoinChart/BitcoinChart";
 
 class HomePage extends Component {
   render() {
@@ -16,15 +16,17 @@ class HomePage extends Component {
     return (
       <section className="HomePage page">
         <h1 className="title-tab">Home</h1>
-        Hello {user.name}, Your balance is{" "}
-        <span className="balance">{user.balance}$</span>
-        <LineChart />
-        {/* <h2>Your Moves:</h2>
+        <p>
+          Hello <span>{user.name}</span>, Your balance is{" "}
+          <span>{user.balance}$</span>
+        </p>
+        <BitcoinChart />
+        <h2>Your Moves</h2>
         {user.moves ? (
           <MoveList moves={user.moves} />
         ) : (
           <h3>No transactions for now.</h3>
-        )} */}
+        )}
       </section>
     );
   }
